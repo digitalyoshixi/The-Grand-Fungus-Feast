@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2orotwvpibpf"]
+
+[ext_resource type="Texture2D" uid="uid://cgbqeeec32tr6" path="res://mushrooms/2.png" id="1_xhqit"]
+[ext_resource type="Script" path="res://assets/mushroom2.gd" id="2_anlyj"]
+
+[node name="2" type="Sprite2D"]
+z_index = 100
+z_as_relative = false
+position = Vector2(1300, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("1_xhqit")
+script = ExtResource("2_anlyj")

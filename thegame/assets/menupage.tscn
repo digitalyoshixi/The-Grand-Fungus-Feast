@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://btuqfjgnsem2c"]
+
+[ext_resource type="Texture2D" uid="uid://dq828o08ytfbq" path="res://assets/gamebg.png" id="1_kqq0e"]
+[ext_resource type="Texture2D" uid="uid://dayd5nil4ilb" path="res://assets/go.png" id="2_68das"]
+[ext_resource type="Texture2D" uid="uid://drajhi834bigl" path="res://assets/gohover.png" id="3_m24s5"]
+[ext_resource type="Script" path="res://assets/TextureButton.gd" id="4_1uash"]
+
+[sub_resource type="FontVariation" id="FontVariation_38pcb"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Gamebg" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_kqq0e")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+top_level = true
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 2088.0
+offset_bottom = 732.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/normal_font = SubResource("FontVariation_38pcb")
+theme_override_font_sizes/normal_font_size = 250
+text = "The Grand Fungus Feast"
+fit_content = true
+scroll_active = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+z_index = 1
+offset_left = 840.0
+offset_top = 752.0
+offset_right = 1140.0
+offset_bottom = 1052.0
+texture_normal = ExtResource("2_68das")
+texture_hover = ExtResource("3_m24s5")
+script = ExtResource("4_1uash")

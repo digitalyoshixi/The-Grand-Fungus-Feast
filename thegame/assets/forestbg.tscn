@@ -1,0 +1,186 @@
+[gd_scene load_steps=23 format=3 uid="uid://dg6mqgxwyye73"]
+
+[ext_resource type="Script" path="res://assets/gamehandler.gd" id="1_e37n4"]
+[ext_resource type="Texture2D" uid="uid://db8h2a4nr4tl2" path="res://assets/myshrooms.png" id="2_jxcwe"]
+[ext_resource type="Script" path="res://assets/mushbox.gd" id="3_mrr2c"]
+[ext_resource type="Texture2D" uid="uid://p7wlsnl8rkkn" path="res://assets/mushhover.png" id="4_svg0j"]
+[ext_resource type="Script" path="res://assets/mushbox2.gd" id="4_t3b6j"]
+[ext_resource type="Script" path="res://assets/rorate.gd" id="5_ck2u4"]
+[ext_resource type="Texture2D" uid="uid://b5c10hhgv3f7p" path="res://assets/barbottom.png" id="7_g4qb5"]
+[ext_resource type="Texture2D" uid="uid://bw25c6fe6dt2m" path="res://assets/toxictop.png" id="8_cv8of"]
+[ext_resource type="Texture2D" uid="uid://dvb2y7rpgo7iy" path="res://assets/toxicprog.png" id="9_l4rad"]
+[ext_resource type="Texture2D" uid="uid://d10bemh828f7m" path="res://assets/hungertop.png" id="10_qbnid"]
+[ext_resource type="Texture2D" uid="uid://k5hqapnyrtg8" path="res://assets/hungerprog.png" id="11_68j2r"]
+[ext_resource type="AudioStream" uid="uid://bcfp0d0yfwkl8" path="res://assets/crunch.mp3" id="12_e10w1"]
+[ext_resource type="Texture2D" uid="uid://dpjuicsyobhvi" path="res://assets/crumplednote.png" id="13_62w8s"]
+[ext_resource type="Texture2D" uid="uid://hke3v8oucdge" path="res://assets/idcbutton.png" id="14_30v14"]
+[ext_resource type="Texture2D" uid="uid://nuofa0ce1kqm" path="res://assets/idcbutton2.png" id="15_u7mk7"]
+[ext_resource type="Script" path="res://assets/idcbutton.gd" id="16_nlun8"]
+[ext_resource type="Texture2D" uid="uid://bkye2p1njndj8" path="res://assets/victoryscreen.png" id="17_5f68d"]
+[ext_resource type="Script" path="res://assets/ReplayButton.gd" id="18_jhl1t"]
+[ext_resource type="Texture2D" uid="uid://dayd5nil4ilb" path="res://assets/go.png" id="18_qqaf7"]
+[ext_resource type="Texture2D" uid="uid://crss4ua67yqqt" path="res://assets/losescreen.png" id="18_xgfo8"]
+[ext_resource type="Texture2D" uid="uid://drajhi834bigl" path="res://assets/gohover.png" id="19_nu2je"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrana"]
+
+[node name="GameObjects" type="Node2D"]
+script = ExtResource("1_e37n4")
+
+[node name="Myshrooms" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_jxcwe")
+metadata/_edit_group_ = true
+
+[node name="Mushroom1" type="Area2D" parent="."]
+z_index = 2
+position = Vector2(472, 560)
+script = ExtResource("3_mrr2c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mushroom1"]
+z_index = 1
+scale = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_lrana")
+debug_color = Color(0.658824, 0.372549, 0.898039, 0.419608)
+
+[node name="Mushhover" type="Sprite2D" parent="Mushroom1"]
+visible = false
+z_index = 1
+z_as_relative = false
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_svg0j")
+script = ExtResource("5_ck2u4")
+
+[node name="Mushroom2" type="Area2D" parent="."]
+z_index = 2
+position = Vector2(1296, 560)
+script = ExtResource("4_t3b6j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mushroom2"]
+z_index = 1
+scale = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_lrana")
+debug_color = Color(0.658824, 0.372549, 0.898039, 0.419608)
+
+[node name="Mushhover2" type="Sprite2D" parent="Mushroom2"]
+visible = false
+z_index = 1
+z_as_relative = false
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_svg0j")
+script = ExtResource("5_ck2u4")
+
+[node name="Toxicmeter" type="TextureProgressBar" parent="."]
+offset_left = 1624.0
+offset_top = 192.0
+offset_right = 1714.0
+offset_bottom = 892.0
+value = 10.0
+rounded = true
+fill_mode = 3
+texture_under = ExtResource("7_g4qb5")
+texture_over = ExtResource("8_cv8of")
+texture_progress = ExtResource("9_l4rad")
+
+[node name="Hungermeter" type="TextureProgressBar" parent="."]
+offset_left = 1768.0
+offset_top = 192.0
+offset_right = 1858.0
+offset_bottom = 892.0
+value = 10.0
+rounded = true
+fill_mode = 3
+texture_under = ExtResource("7_g4qb5")
+texture_over = ExtResource("10_qbnid")
+texture_progress = ExtResource("11_68j2r")
+
+[node name="Crunch SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_e10w1")
+
+[node name="Crumplednote" type="Sprite2D" parent="."]
+visible = false
+z_index = 1000
+z_as_relative = false
+position = Vector2(920, 552)
+texture = ExtResource("13_62w8s")
+
+[node name="idcbutton" type="TextureButton" parent="Crumplednote"]
+visible = false
+offset_left = -208.0
+offset_top = 280.0
+offset_right = 192.0
+offset_bottom = 430.0
+texture_normal = ExtResource("14_30v14")
+texture_hover = ExtResource("15_u7mk7")
+script = ExtResource("16_nlun8")
+
+[node name="PoisonScreen" type="Node2D" parent="Crumplednote"]
+visible = false
+position = Vector2(-920, -552)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Crumplednote/PoisonScreen"]
+offset_left = 431.0
+offset_top = 227.0
+offset_right = 1503.0
+offset_bottom = 867.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 80
+text = "Damn! That mushroom was poison!
+
+I eat 	 More of those and im dead! Never again!"
+
+[node name="PoisonCount" type="RichTextLabel" parent="Crumplednote/PoisonScreen"]
+offset_left = 629.0
+offset_top = 560.0
+offset_right = 717.0
+offset_bottom = 672.0
+theme_override_colors/default_color = Color(0.486275, 0.00392157, 0.827451, 1)
+theme_override_font_sizes/normal_font_size = 80
+text = "3"
+
+[node name="HungerScreen" type="Node2D" parent="Crumplednote"]
+visible = false
+position = Vector2(-920, -552)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Crumplednote/HungerScreen"]
+offset_left = 431.0
+offset_top = 227.0
+offset_right = 1503.0
+offset_bottom = 867.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 80
+text = "Mmmmmm. Num num num num num num num. mmmmm. 
+I eat    more of those and i will be bloated beyond belief!"
+
+[node name="HungerCount" type="RichTextLabel" parent="Crumplednote/HungerScreen"]
+offset_left = 629.0
+offset_top = 560.0
+offset_right = 717.0
+offset_bottom = 672.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 80
+text = "3"
+
+[node name="Victoryscreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(977.5, 528)
+scale = Vector2(1.0197, 1.07255)
+texture = ExtResource("17_5f68d")
+
+[node name="ReplayButton" type="TextureButton" parent="."]
+visible = false
+z_index = 4096
+z_as_relative = false
+offset_left = 792.0
+offset_top = 736.0
+offset_right = 1092.0
+offset_bottom = 1036.0
+texture_normal = ExtResource("18_qqaf7")
+texture_hover = ExtResource("19_nu2je")
+script = ExtResource("18_jhl1t")
+
+[node name="Losescreen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(972.5, 536.5)
+scale = Vector2(1.02172, 1.08137)
+texture = ExtResource("18_xgfo8")
